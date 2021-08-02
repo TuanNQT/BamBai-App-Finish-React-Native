@@ -20,12 +20,11 @@ yarn install
 
 ## Preview
 <div align="center">
-    <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen1.jpg" width="300px" height="500px"</img> 
+    <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen1.jpg" width="250px" height="500px" alt="Order Details"</img> 
+ <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen2.jpg" width="250px" height="500px" alt="Order History"</img> 
+ <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen3.jpg" width="2500px" height="500px" alt="Store screen"</img> 
+ <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen4.jpg" width="250px" height="500px" alt="Detail Item"</img> 
+ <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen5.jpg" width="250px" height="500px" alt="Shopping cart"</img> 
+ <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen6.jpg" width="250px" height="500px" alt="Login Screen"</img> 
+ <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen7.jpg" width="250px" height="500px" alt="Splash screen"</img> 
 </div>
-![Order Detail](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen1.jpg)
-![Order History](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen2.jpg)
-![Store](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen3.jpg)
-![Detail Item](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen4.jpg)
-![Shopping Cart](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen5.jpg)
-![Login screen](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen6.jpg)
-![Splash image](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen7.jpg)
