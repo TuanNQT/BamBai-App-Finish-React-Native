@@ -1,10 +1,3 @@
-# React Native Login Template
-
-This repo is proudly sponsored by:
-## Demo
-
-https://simple-login-template.web.app
-
 ## How to use?
 
 1. Download or clone this repo.
