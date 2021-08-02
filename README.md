@@ -20,3 +20,10 @@ yarn install
 
 ## Preview
 
+![Order Detail](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen1.jpg)
+![Order History](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen2.jpg)
+![Store](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen3.jpg)
+![Detail Item](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen4.jpg)
+![Shopping Cart](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen5.jpg)
+![Login screen](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen6.jpg)
+![Splash image](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen7.jpg)
