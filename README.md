@@ -19,7 +19,9 @@ yarn install
 ```
 
 ## Preview
-
+<div align="center">
+    <img src="https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen1.jpg" width="300px" height="500px"</img> 
+</div>
 ![Order Detail](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen1.jpg)
 ![Order History](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen2.jpg)
 ![Store](https://github.com/TuanNQT/BamBai-App-Finish-React-Native/blob/master/ScreenImages/Screen3.jpg)
