@@ -3,21 +3,18 @@ import { Ionicons } from '@expo/vector-icons';
 import { Provider } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { theme } from './src/core/theme'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {
   HomeScreen,
   LoginScreen,
   RegisterScreen,
   ResetPasswordScreen,
-  Dashboard,DetailsItem,CartScreen,OrderHistory,DetailsOrder
+  Dashboard, DetailsItem, CartScreen, OrderHistory, DetailsOrder
 } from './src/screens'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import DetailsItem from './src/screens/DetailItem';
 import { UserProvider } from './src/helpers/UserData';
-// import CartScreen from './src/screens/CartScreen';
-// import OrderHistory from './src/screens/OrderHistory';
 const Stack = createStackNavigator()
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 export default function App() {
   return (
     <UserProvider>
@@ -30,26 +27,27 @@ export default function App() {
         >
           <Stack.Screen options={{ headerShown: false }} name="Home">
             {() => (<Tab.Navigator
+              tabBarPosition="bottom"
               screenOptions={({ route }) => ({
-
+                
                 tabBarIcon: ({ focused, color, size }) => {
                   let iconName;
-
                   if (route.name === 'Home') {
                     iconName = focused ? 'home-outline' : 'home-outline';
                   } else if (route.name === 'Dashboard') {
                     iconName = focused ? 'list-circle-outline' : 'list-outline';
-                  } else if(route.name==='Cart'){
-                    iconName = focused ? 'cart-outline':'cart' ;
+                  } else if (route.name === 'Cart') {
+                    iconName = focused ? 'cart-outline' : 'cart';
                   }
-
                   // You can return any component that you like here!
-                  return <Ionicons name={iconName} size={size} color={color} />;
+                  return <Ionicons name={iconName} size={20} color={color} />;
                 }
               })}
               tabBarOptions={{
                 activeTintColor: 'tomato',
                 inactiveTintColor: 'gray',
+                showIcon:true,
+                labelStyle:{fontSize:10}
               }}
             >
               <Tab.Screen name="Home" component={HomeScreen} />

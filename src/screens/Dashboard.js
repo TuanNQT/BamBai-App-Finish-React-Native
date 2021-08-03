@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-  FlatList, ActivityIndicator, TextInput, SafeAreaView, Dimensions
+  FlatList, ActivityIndicator, TextInput, SafeAreaView, RefreshControl
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import UserContext from '../helpers/UserData';
@@ -21,6 +21,20 @@ export default function Dashboard({ route, navigation }) {
   const [loadingCart, setisLoading] = useState(false);
   const [selectedValue, setSelectedValue] = useState("All");
   const [selectedValueUnit, setSelectedValueUnit] = useState("Filter By Unit Cost");
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    // wait(2000).then(() => setRefreshing(false));
+    try {
+      getProducts();
+    } catch (error) {
+      return
+    }finally{
+      setRefreshing(false)
+    }
+  }, []);
+
   const getProducts = async () => {
     try {
       const response = await fetch('https://bambai.online/Admin/APIBamBai/Get_AllProduct');
@@ -207,7 +221,6 @@ export default function Dashboard({ route, navigation }) {
   }
   return (
     // <Background >
-
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ height: 200 }} behavior="padding">
         <View style={{ flex: 1, backgroundColor: '#FFFFFF', padding: 20, marginTop: 30 }}>
@@ -264,6 +277,12 @@ export default function Dashboard({ route, navigation }) {
           {isLoading ? <ActivityIndicator size="large" color="#0000ff" /> :
             <FlatList style={styles.list}
               data={dataProduct}
+              refreshControl={
+                <RefreshControl
+                  refreshing={refreshing}
+                  onRefresh={onRefresh}
+                />
+              }
               contentContainerStyle={styles.listContainer}
               keyExtractor={(item) => item.ProductID}
               horizontal={false}
@@ -338,7 +357,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
-    height:100,
+    height: 100,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
