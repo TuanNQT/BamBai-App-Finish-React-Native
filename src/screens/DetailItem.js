@@ -38,8 +38,8 @@ export default function DetailsItem({ route, navigation }) {
                     if (responseJson.code == 250) {
                         console.log("Cập nhật giỏ hàng thành công");
                         Alert.alert(
-                            "Completed",
-                            "Cart is updated",
+                            "Thành công",
+                            "Giỏ hàng đã được cập nhật",
                             [
                                 {
                                     text: "Cancel",
@@ -53,8 +53,8 @@ export default function DetailsItem({ route, navigation }) {
                     if (responseJson.code == 200) {
                         console.log("Thêm vào giỏ hàng thành công");
                         Alert.alert(
-                            "Completed",
-                            "Item is inserted to cart",
+                            "Thành công",
+                            "Sản phẩm đã được thêm vào giỏ",
                             [
                                 {
                                     text: "Cancel",
@@ -69,8 +69,8 @@ export default function DetailsItem({ route, navigation }) {
                     if (responseJson.code == 500) {
                         console.log("Lỗi gì đó");
                         Alert.alert(
-                            "Error",
-                            "Item is not insert!!",
+                            "Lỗi gì đó...",
+                            "Sản phẩm chưa được thêm!!",
                             [
                                 {
                                     text: "Cancel",
@@ -140,7 +140,7 @@ export default function DetailsItem({ route, navigation }) {
                     {isLoading == true ? <ActivityIndicator size="large" color="#0000ff" /> :
                         <View style={styles.addToCarContainer}>
                             <TouchableOpacity style={styles.shareButton} onPress={() => addtoCart(item.ProductID)}>
-                                <Text style={styles.shareButtonText}>Add To Cart</Text>
+                                <Text style={styles.shareButtonText}>Thêm vào giỏ</Text>
                             </TouchableOpacity>
                         </View>
                     }
@@ -155,7 +155,7 @@ export default function DetailsItem({ route, navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 10,
+        marginTop: 50,
     },
     productImg: {
         width: 200,

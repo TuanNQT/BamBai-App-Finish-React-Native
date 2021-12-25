@@ -50,9 +50,9 @@ export default function App() {
                 labelStyle:{fontSize:10}
               }}
             >
-              <Tab.Screen name="Home" component={HomeScreen} />
-              <Tab.Screen name="Dashboard" component={Dashboard} />
-              <Tab.Screen name="Cart" component={CartScreen} />
+              <Tab.Screen name="Home" options={{title:'Trang chủ'}} component={HomeScreen} />
+              <Tab.Screen name="Dashboard" component={Dashboard} options={{title:'Shopping'}}/>
+              <Tab.Screen name="Cart" component={CartScreen} options={{title:'Giỏ hàng'}}/>
             </Tab.Navigator>)}
           </Stack.Screen>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />

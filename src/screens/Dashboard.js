@@ -136,8 +136,8 @@ export default function Dashboard({ route, navigation }) {
           if (responseJson.code == 250) {
             console.log("Cập nhật giỏ hàng thành công");
             Alert.alert(
-              "Completed",
-              "Cart is updated",
+              "Thành công",
+              "Giỏ hàng đã được cập nhật",
               [
                 { text: "OK", onPress: () => console.log("OK Pressed") }
               ]
@@ -146,8 +146,8 @@ export default function Dashboard({ route, navigation }) {
           if (responseJson.code == 200) {
             console.log("Thêm vào giỏ hàng thành công");
             Alert.alert(
-              "Completed",
-              "Item is inserted to cart",
+              "Thành công",
+              "Đã thêm sản phẩm vào giỏ",
               [
                 {
                   text: "Cancel",
@@ -161,8 +161,8 @@ export default function Dashboard({ route, navigation }) {
           if (responseJson.code == 500) {
             console.log("Lỗi gì đó");
             Alert.alert(
-              "Error",
-              "Item is not insert!!",
+              "Lỗi gì đó..",
+              "Lỗi thêm sản phẩm vào giỏ!!",
               [
                 {
                   text: "Cancel",
@@ -185,7 +185,7 @@ export default function Dashboard({ route, navigation }) {
             onPress: () => console.log("Cancel Pressed"),
             style: "cancel"
           },
-          { text: "Login Now", onPress: () => navigation.navigate('LoginScreen') }
+          { text: "Đăng nhập ngay", onPress: () => navigation.navigate('LoginScreen') }
         ]
       );
     }
@@ -208,7 +208,7 @@ export default function Dashboard({ route, navigation }) {
               <View style={styles.socialBarSection}>
                 <TouchableOpacity style={styles.socialBarButton} onPress={() => addProductToCart(item.ProductID)}>
                   <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/nolan/96/3498db/add-shopping-cart.png' }} />
-                  <Text style={[styles.socialBarLabel, styles.buyNow]}>Buy Now</Text>
+                  <Text style={[styles.socialBarLabel, styles.buyNow]}>Thêm giỏ</Text>
                 </TouchableOpacity>
 
               </View>
@@ -226,7 +226,7 @@ export default function Dashboard({ route, navigation }) {
         <View style={{ flex: 1, backgroundColor: '#FFFFFF', padding: 20, marginTop: 30 }}>
           <View style={{ flex: 0.5, alignItems: 'baseline', }}>
             <TextInput style={styles.inputs}
-              placeholder="Search Key"
+              placeholder="Từ khóa"
               underlineColorAndroid='transparent'
               onChangeText={(search) => {
                 searchItem(search)
@@ -250,8 +250,8 @@ export default function Dashboard({ route, navigation }) {
                 // }
                 setSelectedValue(value)
               }}>
-              <Picker.Item label={'Filter By Category'} value={0} />
-              <Picker.Item label={'All'} value={0} />
+              <Picker.Item label={'Tìm theo danh mục'} value={0} />
+              <Picker.Item label={'Tất cả'} value={0} />
               {dataCate.map((category) => <Picker.Item key={category.CategoryID} label={category.CategoryName} value={category.CategoryID} />)}
 
             </Picker>
@@ -262,9 +262,9 @@ export default function Dashboard({ route, navigation }) {
                 ItembyUnit(value)
                 setSelectedValueUnit(value)
               }}>
-              <Picker.Item label={'Filter By Unit Cost'} value={1} />
-              <Picker.Item label={'Ascending'} value='1' />
-              <Picker.Item label={'Descending'} value='0' />
+              <Picker.Item label={'Tìm theo giá'} value={1} />
+              <Picker.Item label={'Tăng dần'} value='1' />
+              <Picker.Item label={'Giảm dần'} value='0' />
 
             </Picker>
           </View>
@@ -272,7 +272,7 @@ export default function Dashboard({ route, navigation }) {
 
         </View>
       </SafeAreaView>
-      <SafeAreaView style={{ height: 400 }} behavior="padding">
+      <SafeAreaView style={{ height: 630 }} behavior="padding">
         <View style={{ flex: 2.5, marginBottom: 30 }}>
           {isLoading ? <ActivityIndicator size="large" color="#0000ff" /> :
             <FlatList style={styles.list}

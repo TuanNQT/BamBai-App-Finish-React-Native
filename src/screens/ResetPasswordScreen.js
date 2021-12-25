@@ -1,12 +1,21 @@
 import React, { useState } from 'react'
-import Background from '../components/Background'
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  ImageBackground,
+} from 'react-native'
+import { theme } from '../core/theme'
 import BackButton from '../components/BackButton'
 import Logo from '../components/Logo'
 import Header from '../components/Header'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { emailValidator } from '../helpers/emailValidator'
-import { ActivityIndicator,Alert } from 'react-native'
 
 export default function ResetPasswordScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -18,95 +27,125 @@ export default function ResetPasswordScreen({ navigation }) {
       return
     }
     setisLoading(true)
-    fetch("https://bambai.online/Admin/APIBamBai/Reset", {
-      method: "POST",
+    fetch('https://bambai.online/Admin/APIBamBai/Reset', {
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: email.value
-      })
-    }).then(response => response.json())
+        email: email.value,
+      }),
+    })
+      .then((response) => response.json())
       .then((responseJson) => {
         setisLoading(false)
-        console.log(responseJson);
-        if (responseJson.code == 200) {
+        console.log(responseJson)
+        if (responseJson.code === 200) {
           Alert.alert(
-            "Completed",
-            "Check your email to reset password",
+            'Thành công',
+            'Kiểm tra email và làm theo hướng dẫn để đặt lại mật khẩu',
             [
               {
-                text: "OK",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
+                text: 'OK',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
               },
               {
-                text: "Login Now", onPress: () => navigation.navigate('LoginScreen')
-              }
-            ]
-          );
-        } else if (responseJson.code == 404) {
-          Alert.alert(
-            "Error",
-            "Email is not already",
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
+                text: 'Đăng nhập',
+                onPress: () => navigation.navigate('LoginScreen'),
               },
-              {
-                text: "Ok", onPress: () => console.log("OK")
-              }
             ]
-          );
-        } else if (responseJson.code == 500) {
-          Alert.alert(
-            "Error",
-            "Try again",
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              {
-                text: "Ok", onPress: () => console.log("OK")
-              }
-            ]
-          );
+          )
+        } else if (responseJson.code === 404) {
+          Alert.alert('Lỗi..', 'Email không tồn tại', [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {
+              text: 'Ok',
+              onPress: () => console.log('OK'),
+            },
+          ])
+        } else if (responseJson.code === 500) {
+          Alert.alert('Lỗi!!', 'Thử lại sau', [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {
+              text: 'Ok',
+              onPress: () => console.log('OK'),
+            },
+          ])
         }
-      }).catch(error => { console.log(error), alert("Error! Please try again") });
+      })
+      .catch((error) => {
+        alert('Lỗi gì đó! Vui lòng thử lại sau')
+      })
   }
 
   return (
-    <Background>
-      <BackButton goBack={navigation.goBack} />
-      <Logo />
-      <Header>Restore Password</Header>
-      <TextInput
-        label="E-mail address"
-        returnKeyType="done"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-        description="You will receive email with password reset link."
-      />
-      {isLoading ? <ActivityIndicator size="large" color="#0000ff" /> :
-        <Button
-          mode="contained"
-          onPress={sendResetPasswordEmail}
-          style={{ marginTop: 16 }}
+    <ImageBackground
+      source={require('../assets/background_dot.png')}
+      resizeMode="repeat"
+      style={styles.Img}
+    >
+      <View style={styles.container}>
+        <BackButton goBack={navigation.goBack} />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-          Send Instructions
-        </Button>
-      }
-    </Background>
+          <BackButton goBack={navigation.goBack} />
+          <Logo />
+          <Header>Đặt lại mật khẩu</Header>
+          <TextInput
+            label="E-mail address"
+            returnKeyType="done"
+            value={email.value}
+            onChangeText={(text) => setEmail({ value: text, error: '' })}
+            error={!!email.error}
+            errorText={email.error}
+            autoCapitalize="none"
+            autoCompleteType="email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            description="Bạn sẽ nhận được email chứa mã bảo mật để đặt lại mật khẩu."
+            style={styles.TextInput}
+          />
+          {isLoading ? (
+            <ActivityIndicator size="large" color="#0000ff" />
+          ) : (
+            <Button
+              mode="contained"
+              onPress={sendResetPasswordEmail}
+              style={styles.TextInput}
+            >
+              Lấy mã
+            </Button>
+          )}
+        </KeyboardAvoidingView>
+      </View>
+    </ImageBackground>
   )
 }
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 200,
+    padding: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  Img: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: theme.colors.surface,
+  },
+  TextInput: {
+    alignSelf: 'stretch',
+    width: 300,
+  },
+})

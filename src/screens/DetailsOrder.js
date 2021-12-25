@@ -55,10 +55,10 @@ export default function DetailsOrder({ route, navigation }) {
                         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Chi tiết đơn hàng</Text>
                             <Grid>
                                 <Row style={styles.row}>
-                                    <Col style={styles.col} size={30}><Text style={styles.text}>Image</Text></Col>
-                                    <Col style={styles.col} size={20}><Text style={styles.text}>Unit Cost</Text></Col>
-                                    <Col style={styles.col} size={20}><Text style={styles.text}>Quantity</Text></Col>
-                                    <Col style={styles.col} size={30}><Text style={styles.text}>Sub total</Text></Col>
+                                    <Col style={styles.col} size={30}><Text style={styles.text}>Ảnh</Text></Col>
+                                    <Col style={styles.col} size={20}><Text style={styles.text}>Đơn giá</Text></Col>
+                                    <Col style={styles.col} size={20}><Text style={styles.text}>Số lượng</Text></Col>
+                                    <Col style={styles.col} size={30}><Text style={styles.text}>Thành tiền</Text></Col>
                                 </Row>
                                 {data.map((c) => 
                                     <Row key={c.ProductID} style={styles.row}>
@@ -69,7 +69,7 @@ export default function DetailsOrder({ route, navigation }) {
                                     </Row>
                                 )}
                             </Grid>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total:{Total}</Text>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Tổng giá trị:{Total}</Text>
                         </ScrollView>
                     </View >
                 }
